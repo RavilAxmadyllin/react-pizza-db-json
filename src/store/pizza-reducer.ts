@@ -32,8 +32,10 @@ export const slice = createSlice({
             })
     }
 })
-export const pizzaReducer = slice.reducer
 export const {setCategory, setSort} = slice.actions
-export const asyncActions = {setPizzas, setCategory, setSort}
+export const pizzaReducer = slice.reducer
+
+
+
 
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 
-export const SortPopup: React.FC<PropsType> = ({currentValue, changeSortBy}) => {
+export const SortPopup: React.FC<PropsType> = React.memo(({currentValue, changeSortBy}) => {
     const items = [
         {name: 'популярности', sort: 'rating'},
         {name: 'цена', sort: 'price'},
@@ -9,7 +9,7 @@ export const SortPopup: React.FC<PropsType> = ({currentValue, changeSortBy}) => 
     const [showPopup, setShowPopup] = useState(false)
     const sortRef = useRef(null)
     const handleOutSideClick = (event: any) => {
-        const path = event.path || event.composedPath && event.composedPath()
+        const path = event.path || (event.composedPath && event.composedPath())
         if (!path.includes(sortRef.current)) {
             setShowPopup(false)
         }
@@ -44,7 +44,7 @@ export const SortPopup: React.FC<PropsType> = ({currentValue, changeSortBy}) => 
         </>
 
     )
-}
+})
 type PropsType = {
     currentValue: string
     changeSortBy: (value: string) => void
